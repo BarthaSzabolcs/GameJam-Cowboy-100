@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 
 using BarthaSzabolcs.RichTextHelper;
+using System.Collections.Generic;
 
 namespace GameJam.HealthSystem
 {
@@ -21,7 +22,7 @@ namespace GameJam.HealthSystem
             {
                 if (value <= 0)
                 {
-                    Die();
+                    Explode();
                 }
                 else if (value == 1)
                 {
@@ -47,6 +48,11 @@ namespace GameJam.HealthSystem
         private int _points;
 
         #endregion
+        #region Private Fields
+
+        private List<GameObject> swallowedObjects = new List<GameObject>();
+
+        #endregion
 
         #endregion
 
@@ -67,11 +73,29 @@ namespace GameJam.HealthSystem
             Debug.Log($"{name}'s health reached shrinked.".Color(Color.cyan));
         }
 
-        private void Die()
+        private void Explode()
         {
             Debug.Log($"{name}'s health reached shrinked.".Color(Color.magenta));
+            
+            foreach (var swallowedObject in swallowedObjects)
+            {
+                swallowedObject.SetActive(true);
+                var rBody = swallowedObject.GetComponent<Rigidbody>();
+
+                var vector = new Vector3(Random.Range(-1, 1), 0, Random.Range(-1, 1));
+                rBody.velocity = vector.normalized * 10f;
+            }
+
             Destroy(gameObject);
         }
+
+        public void Swallow(GameObject swallowedObject)
+        {
+            swallowedObjects.Add(swallowedObject);
+            swallowedObject.SetActive(false);
+        }
+
+
 
         #endregion
     }

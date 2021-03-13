@@ -14,6 +14,9 @@ namespace GameJam.FoodGun
 
         [field: SerializeField]
         public int NutriotionValue { get; private set; }
+        
+        [field: SerializeField]
+        public float LifeTime { get; private set; }
 
         [field: SerializeField] 
         public string TargetTag { get; set; }
