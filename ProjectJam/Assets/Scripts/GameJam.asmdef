@@ -1,0 +1,17 @@
+{
+    "name": "GameJam",
+    "rootNamespace": "",
+    "references": [
+        "GUID:0760684d3bcc52340a773d424d0faea3",
+        "GUID:133a28952ac5e4348a5741b17c2beb91"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
