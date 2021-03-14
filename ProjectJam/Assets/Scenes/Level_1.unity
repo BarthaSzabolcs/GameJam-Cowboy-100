@@ -2995,6 +2995,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2833630270704708130, guid: 21b889034265fcb43a422049feb78acb, type: 3}
   m_PrefabInstance: {fileID: 2833630269850137668}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &1427365479 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 3542512969404801801, guid: 21b889034265fcb43a422049feb78acb, type: 3}
+  m_PrefabInstance: {fileID: 2833630269850137668}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1427365482 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2833630270704708131, guid: 21b889034265fcb43a422049feb78acb, type: 3}
@@ -4117,10 +4122,18 @@ PrefabInstance:
       propertyPath: foods.Array.data[3]
       value: 
       objectReference: {fileID: 11400000, guid: 3f414e8f42f30f4409c3e103b152c033, type: 2}
+    - target: {fileID: 2833630269453916846, guid: 21b889034265fcb43a422049feb78acb, type: 3}
+      propertyPath: foods.Array.data[4]
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 2833630270704708130, guid: 21b889034265fcb43a422049feb78acb, type: 3}
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 2833630270704708131, guid: 21b889034265fcb43a422049feb78acb, type: 3}
+      propertyPath: animator.animator
+      value: 
+      objectReference: {fileID: 1427365479}
     - target: {fileID: 2833630270704708143, guid: 21b889034265fcb43a422049feb78acb, type: 3}
       propertyPath: m_RootOrder
       value: 2

@@ -5,6 +5,9 @@ using BarthaSzabolcs.RichTextHelper;
 using BarthaSzabolcs.CommonUtility;
 using System;
 
+using GameJam;
+using GameJam.AI;
+
 public class Player : MonoBehaviour
 {
     #region Datamembers
@@ -20,12 +23,13 @@ public class Player : MonoBehaviour
 
     #endregion
     #region Editor Settings
+
     [SerializeField] private ParticleSystem dust;
     [SerializeField] private float runSpeed;
     [SerializeField] private float dashSpeed;
     [SerializeField] private Gun gun;
     [SerializeField] private LayerMask groundMask;
-    
+    [SerializeField] private PlayerAnimationHelper animator;
 
     [SerializeField] private float dashTime;
     [SerializeField] private float dashRecharge;
@@ -192,6 +196,8 @@ public class Player : MonoBehaviour
         direction.Normalize();
 
         gun.transform.right = direction;
+
+        animator.RefreshDirection(direction);
     }
     
     #endregion
