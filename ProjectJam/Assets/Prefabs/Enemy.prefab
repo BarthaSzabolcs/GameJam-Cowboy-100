@@ -164,9 +164,9 @@ MonoBehaviour:
   health: {fileID: 8312407161809480383}
   animator:
     animator: {fileID: 6520827628289779918}
-  chargeDuration: 2
+  chargeDuration: 1
   chargeFrequency: 2
-  chargeRange: 5
+  chargeRange: 15
   chargeSpeed: 10
   wanderTime: 2
   wanderDistance: 5
