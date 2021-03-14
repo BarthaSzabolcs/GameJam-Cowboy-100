@@ -621,7 +621,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7052194333978615393, guid: 4d86e4b74f6d1954d84ee8348558b59a, type: 3}
       propertyPath: foods.Array.size
-      value: 2
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7052194333978615393, guid: 4d86e4b74f6d1954d84ee8348558b59a, type: 3}
       propertyPath: foods.Array.data[0]
@@ -631,6 +631,18 @@ PrefabInstance:
       propertyPath: foods.Array.data[1]
       value: 
       objectReference: {fileID: 11400000, guid: b9d1b94cb39830b40930c8bd4eae46ab, type: 2}
+    - target: {fileID: 7052194333978615393, guid: 4d86e4b74f6d1954d84ee8348558b59a, type: 3}
+      propertyPath: foods.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: 4ba72b147f1db08499add98c64e76db3, type: 2}
+    - target: {fileID: 7052194333978615393, guid: 4d86e4b74f6d1954d84ee8348558b59a, type: 3}
+      propertyPath: foods.Array.data[3]
+      value: 
+      objectReference: {fileID: 11400000, guid: 3f414e8f42f30f4409c3e103b152c033, type: 2}
+    - target: {fileID: 7052194333978615393, guid: 4d86e4b74f6d1954d84ee8348558b59a, type: 3}
+      propertyPath: foods.Array.data[4]
+      value: 
+      objectReference: {fileID: 11400000, guid: 399d69e217042f2449acf08529bb4a25, type: 2}
     - target: {fileID: 7052194333978615405, guid: 4d86e4b74f6d1954d84ee8348558b59a, type: 3}
       propertyPath: m_RootOrder
       value: 1
