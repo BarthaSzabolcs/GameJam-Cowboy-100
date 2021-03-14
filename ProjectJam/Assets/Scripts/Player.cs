@@ -14,14 +14,16 @@ public class Player : MonoBehaviour
 
     #endregion
     #region Editor Settings
-
+    [SerializeField] private ParticleSystem dust;
     [SerializeField] private float runSpeed;
     [SerializeField] private float dashSpeed;
     [SerializeField] private Gun gun;
     [SerializeField] private LayerMask groundMask;
+    
 
     [SerializeField] private float dashTime;
     [SerializeField] private float dashRecharge;
+    
 
     #endregion
     #region Private Properties
@@ -40,10 +42,12 @@ public class Player : MonoBehaviour
             switch (value)
             {
                 case States.Move:
+                    
                     dashRechargeTimer.Reset();
                     break;
 
                 case States.Dash:
+                    CreateDust();
                     dashDurationTimer.Reset();
                     break;
                 
@@ -104,7 +108,7 @@ public class Player : MonoBehaviour
         {
             case States.Move:
                 Run();
-
+                CreateDust();
                 RotateGun();
                 ShootGun();
                 break;
@@ -119,6 +123,7 @@ public class Player : MonoBehaviour
 
     private void Run()
     {
+        
         dashRechargeTimer.Tick(Time.deltaTime);
 
         var movemnet = new Vector2()
@@ -143,6 +148,7 @@ public class Player : MonoBehaviour
 
     private void Dash()
     {
+        
         dashDurationTimer.Tick(Time.deltaTime);
 
         if (dashDurationTimer.Elapsed)
@@ -171,6 +177,10 @@ public class Player : MonoBehaviour
         direction.Normalize();
 
         gun.transform.right = direction;
+    }
+
+    public void CreateDust() {
+        dust.Play();
     }
     
     #endregion

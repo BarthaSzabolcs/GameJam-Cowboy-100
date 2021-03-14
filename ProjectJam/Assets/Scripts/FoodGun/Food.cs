@@ -65,6 +65,7 @@ namespace GameJam.FoodGun
 
         private void OnCollisionEnter2D(Collision2D collision)
         {
+            Instantiate(Data.Boom, transform.position, Quaternion.identity);
             Debug.Log($"{name} collided with {collision.collider.name}.".Color(Color.grey));
             
             if (collision.gameObject.tag == Data.TargetTag)

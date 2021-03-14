@@ -27,6 +27,9 @@ namespace GameJam.FoodGun
         [field: SerializeField] 
         public string TargetTag { get; set; }
 
+        [field: SerializeField]
+        public ParticleSystem Boom{ get; private set; }
+
         #endregion
 
         #endregion

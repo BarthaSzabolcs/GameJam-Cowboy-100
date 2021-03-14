@@ -198,6 +198,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Data>k__BackingField: {fileID: 11400000, guid: be4147d3eea35bb4cb459bcadd3c45d3, type: 2}
   flash: {fileID: 813852017}
+  boom: {fileID: 7913037689366773055, guid: 532c3dee2160ada41be766af9b5a23cb, type: 3}
 --- !u!114 &3668360330124417057
 MonoBehaviour:
   m_ObjectHideFlags: 0
