@@ -80,6 +80,10 @@ namespace GameJam.FoodGun
 
                 health.Points -= Data.NutriotionValue;
             }
+            else
+            {
+                Destroy(gameObject);
+            }
         }
 
         private void InitData(FoodData data)

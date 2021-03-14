@@ -18,3 +18,4 @@ MonoBehaviour:
   <Radius>k__BackingField: 0.4104281
   <LifeTime>k__BackingField: 1
   <TargetTag>k__BackingField: Enemy
+  <Boom>k__BackingField: {fileID: 3237391557525654256, guid: 3b976ea1c55c0dd418068bca1a197b7b, type: 3}

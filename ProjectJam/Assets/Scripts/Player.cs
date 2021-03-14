@@ -42,12 +42,12 @@ public class Player : MonoBehaviour
             switch (value)
             {
                 case States.Move:
-                    
+                    // dust.Stop();
                     dashRechargeTimer.Reset();
                     break;
 
                 case States.Dash:
-                    CreateDust();
+                    // dust.Play();
                     dashDurationTimer.Reset();
                     break;
                 
@@ -111,7 +111,6 @@ public class Player : MonoBehaviour
         {
             case States.Move:
                 Run();
-                CreateDust();
                 RotateGun();
                 ShootGun();
                 break;
@@ -151,7 +150,6 @@ public class Player : MonoBehaviour
 
     private void Dash()
     {
-        
         dashDurationTimer.Tick(Time.deltaTime);
 
         if (dashDurationTimer.Elapsed)
@@ -180,10 +178,6 @@ public class Player : MonoBehaviour
         direction.Normalize();
 
         gun.transform.right = direction;
-    }
-
-    public void CreateDust() {
-        dust.Play();
     }
     
     #endregion
