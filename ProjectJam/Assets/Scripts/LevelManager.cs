@@ -15,6 +15,7 @@ namespace GameJam
 
         [SerializeField] private int calmed;
         [SerializeField] private int dead;
+        [SerializeField] private Player player;
 
         private void OnEnable()
         {
@@ -23,6 +24,8 @@ namespace GameJam
                 enemy.OnCalm += CountCalmed;
                 enemy.OnDeath += HandleDeath;
             }
+
+            player.OnDeath += HandleDeadPlayer;
 
             startScreen.Show();
             endScreen.gameObject.SetActive(false);
@@ -35,6 +38,8 @@ namespace GameJam
                 enemy.OnCalm -= CountCalmed;
                 enemy.OnDeath -= HandleDeath;
             }
+
+            player.OnDeath -= HandleDeadPlayer;
         }
 
         private void CountCalmed()
@@ -74,6 +79,16 @@ namespace GameJam
                     deadEnemies: dead,
                     nextLevelIndex: nextLevelIndex);
             }
+        }
+
+        private void HandleDeadPlayer()
+        {
+            endScreen.Show(
+                playerDead: true,
+                enemies: enemies.Length,
+                calmedEnemies: calmed,
+                deadEnemies: dead,
+                nextLevelIndex: nextLevelIndex);
         }
     }
 }

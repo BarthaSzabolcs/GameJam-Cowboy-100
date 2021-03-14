@@ -30,6 +30,9 @@ namespace GameJam.FoodGun
         [field: SerializeField]
         public ParticleSystem Boom{ get; private set; }
 
+        [field: SerializeField]
+        public int Bounces { get; private set; }
+
         #endregion
 
         #endregion

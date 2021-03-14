@@ -19,3 +19,4 @@ MonoBehaviour:
   <LifeTime>k__BackingField: 10
   <TargetTag>k__BackingField: Enemy
   <Boom>k__BackingField: {fileID: 3237391557525654256, guid: fc81f04e1ace1a44fa1bfcf23fae3271, type: 3}
+  <Bounces>k__BackingField: 3

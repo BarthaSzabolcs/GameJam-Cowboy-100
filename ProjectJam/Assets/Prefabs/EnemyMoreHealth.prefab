@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2652321573234795323}
   - component: {fileID: 813852017}
   m_Layer: 7
-  m_Name: Enemy
+  m_Name: EnemyMoreHealth
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -196,7 +196,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c870ff431dfd6764e8f8717ef7b6714e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <Data>k__BackingField: {fileID: 11400000, guid: be4147d3eea35bb4cb459bcadd3c45d3, type: 2}
+  <Data>k__BackingField: {fileID: 11400000, guid: 62b3d8553533d0144a38ffb72c308e46, type: 2}
   flash: {fileID: 813852017}
   boom: {fileID: 7913037689366773055, guid: 532c3dee2160ada41be766af9b5a23cb, type: 3}
 --- !u!114 &3668360330124417057

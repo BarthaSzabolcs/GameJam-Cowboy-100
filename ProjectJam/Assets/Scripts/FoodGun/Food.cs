@@ -38,7 +38,10 @@ namespace GameJam.FoodGun
         #region Private Fields
 
         private Timer lifeTimer = new Timer();
-        
+        private int bounces = 0;
+        private Rigidbody2D rigidbody;
+        private Vector2 velocity;
+
         #endregion
 
         #endregion
@@ -56,11 +59,18 @@ namespace GameJam.FoodGun
             lifeTimer.OnTimeElapsed += () => Destroy(gameObject);
             lifeTimer.Interval = Data.LifeTime;
             lifeTimer.Init();
+
+            rigidbody = GetComponent<Rigidbody2D>();
         }
 
         private void Update()
         {
             lifeTimer.Tick(Time.deltaTime);
+        }
+
+        private void FixedUpdate()
+        {
+            velocity = rigidbody.velocity;
         }
 
         public void Reset()
@@ -73,7 +83,7 @@ namespace GameJam.FoodGun
             Instantiate(Data.Boom, transform.position, Quaternion.identity);
             Debug.Log($"{name} collided with {collision.collider.name}.".Color(Color.grey));
             
-            if (collision.gameObject.tag == Data.TargetTag)
+            if (collision.gameObject.tag == Data.TargetTag /*&& bounces == Data.Bounces*/)
             {
                 var health = collision.gameObject.GetComponent<Health>();
                 health.Swallow(gameObject);
@@ -82,7 +92,17 @@ namespace GameJam.FoodGun
             }
             else
             {
-                Destroy(gameObject);
+                if (bounces < Data.Bounces)
+                {
+                    var vector = Vector2.Reflect(velocity, collision.contacts[0].normal);
+                    rigidbody.velocity = vector;
+
+                    bounces++;
+                }
+                else
+                {
+                    Destroy(gameObject);
+                }
             }
         }
 

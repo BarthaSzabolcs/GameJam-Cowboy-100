@@ -3,11 +3,17 @@ using UnityEngine;
 using GameJam.FoodGun;
 using BarthaSzabolcs.RichTextHelper;
 using BarthaSzabolcs.CommonUtility;
+using System;
 
 public class Player : MonoBehaviour
 {
     #region Datamembers
 
+    #region Events
+
+    public Action OnDeath;
+
+    #endregion
     #region Enums
 
     private enum States { Move, Dash };
@@ -100,6 +106,14 @@ public class Player : MonoBehaviour
         if (Time.deltaTime != 0)
         {
             StateLogic();
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Enemy")
+        {
+            OnDeath?.Invoke();
         }
     }
 
