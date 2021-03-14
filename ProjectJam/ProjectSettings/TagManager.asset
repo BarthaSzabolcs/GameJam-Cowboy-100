@@ -42,3 +42,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Envierment
+    uniqueID: 206693567
+    locked: 0
+  - name: Player
+    uniqueID: 2547602705
+    locked: 0
+  - name: Bullet
+    uniqueID: 576866085
+    locked: 0

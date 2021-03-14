@@ -1,8 +1,10 @@
 using UnityEngine;
+using UnityEngine.AI;
 
 using BarthaSzabolcs.CommonUtility;
-using UnityEngine.AI;
 using BarthaSzabolcs.RichTextHelper;
+
+using GameJam.HealthSystem;
 
 namespace GameJam.AI
 {
@@ -17,6 +19,11 @@ namespace GameJam.AI
 
         #region Editor Settings
 
+        [Header("Components")]
+        [SerializeField] private NavMeshAgent agent;
+        [SerializeField] private Health health;
+        [SerializeField] private AIAnimatorHelper animator;
+
         [Header("Charge")]
         [SerializeField] private float chargeDuration;
         [SerializeField] private float chargeFrequency;
@@ -25,8 +32,9 @@ namespace GameJam.AI
 
         [Header("Rest")]
         [SerializeField] private float wanderTime;
-        [SerializeField] private float wamderDistance;
+        [SerializeField] private float wanderDistance;
         [SerializeField] private float wanderSpeed;
+        
         #endregion
         #region Public Properties
 
@@ -52,6 +60,8 @@ namespace GameJam.AI
                 {
                     case Behaviour.None:
                         agent.destination = transform.position;
+                        
+                        animator.Calm = true;
                         break;
 
                     case Behaviour.Wander:
@@ -59,6 +69,8 @@ namespace GameJam.AI
                         agent.speed = wanderSpeed;
                         
                         wanderTimer.Reset();
+
+                        animator.Calm = false;
                         break;
 
                     case Behaviour.Charge:
@@ -66,6 +78,8 @@ namespace GameJam.AI
                         agent.speed = chargeSpeed;
 
                         chargeDurationTimer.Reset();
+
+                        animator.Calm = false;
                         break;
 
                     default:
@@ -84,11 +98,18 @@ namespace GameJam.AI
         private Timer chargeDurationTimer = new Timer();
         private Timer wanderTimer = new Timer();
 
-        private NavMeshAgent agent;
-
         #endregion
 
         #endregion
+
+        private void OnDrawGizmos()
+        {
+            if (agent != null && Application.isPlaying)
+            {
+                Gizmos.color = Color.magenta;
+                Gizmos.DrawWireSphere(agent.destination, 0.125f);
+            }
+        }
 
         void Start()
         {
@@ -101,8 +122,9 @@ namespace GameJam.AI
             wanderTimer.Interval = wanderTime;
             wanderTimer.Init();
 
-            agent = GetComponent<NavMeshAgent>();
             State = Behaviour.Wander;
+
+            health.OnCalm += () => State = Behaviour.None;
         }
 
         void Update()
@@ -110,6 +132,8 @@ namespace GameJam.AI
             restTimer.Tick(Time.deltaTime);
 
             StateLogic();
+            transform.position = agent.transform.position;
+            animator.RefreshDirection(agent.transform.forward);
         }
 
         private void StateLogic()
@@ -158,8 +182,8 @@ namespace GameJam.AI
 
         private Vector3 RandomDestination()
         {
-            var randomVector = new Vector3(Random.Range(-1, 1), y: 0, z: Random.Range(-1, 1)).normalized;
-            randomVector *= wamderDistance;
+            var randomVector = new Vector3(Random.Range(-1f, 1f), y: Random.Range(-1f, 1f), z: 0).normalized;
+            randomVector *= wanderDistance;
 
             return transform.position + randomVector;
         }
@@ -169,7 +193,7 @@ namespace GameJam.AI
             var playerPosition = BlackBoard.Player.transform.position;
             var position = transform.position;
 
-            var sqrDistance = Vector3.SqrMagnitude(playerPosition - position);
+            var sqrDistance = Vector2.SqrMagnitude(playerPosition - position);
 
             return sqrDistance < chargeRange * chargeRange;
         }

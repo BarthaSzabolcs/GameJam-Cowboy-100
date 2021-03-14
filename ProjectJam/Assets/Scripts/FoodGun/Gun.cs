@@ -11,12 +11,15 @@ namespace GameJam.FoodGun
 
         [SerializeField] private GameObject[] foods;
 
-        [SerializeField] private Vector3 barrelOffset;
+        [SerializeField] private Vector2 barrelOffset;
+
+        [SerializeField] private SpriteRenderer leftHand;
+        [SerializeField] private SpriteRenderer rightHand;
 
         #endregion
         #region Private Properties
 
-        private Vector3 BarrelPosition
+        private Vector2 BarrelPosition
         {
             get
             {
@@ -28,6 +31,7 @@ namespace GameJam.FoodGun
         #region Private Fields
 
         private Queue<GameObject> foodQueue = new Queue<GameObject>();
+        private SpriteRenderer spriteRenderer;
 
         #endregion
 
@@ -49,6 +53,26 @@ namespace GameJam.FoodGun
             {
                 foodQueue.Enqueue(NextFood());
             }
+
+            spriteRenderer = GetComponent<SpriteRenderer>();
+        }
+
+        private void Update()
+        {
+            transform.localScale = new Vector3(x: 1, y: transform.right.x > 0 ? 1 : -1, z: 0);
+
+            if (transform.right.y < 0)
+            {
+                spriteRenderer.sortingOrder = 1;
+                leftHand.sortingOrder = 2;
+                rightHand.sortingOrder = 3;
+            }
+            else
+            {
+                spriteRenderer.sortingOrder = -1;
+                leftHand.sortingOrder = -2;
+                rightHand.sortingOrder = -3;
+            }
         }
 
         #endregion
@@ -58,7 +82,7 @@ namespace GameJam.FoodGun
             var food = foodQueue.Dequeue();
 
             var instance = Instantiate(food, BarrelPosition, Quaternion.identity);
-            instance.transform.forward = transform.forward;
+            instance.transform.right = transform.right;
 
             foodQueue.Enqueue(NextFood());
         }

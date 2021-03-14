@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe957de174c11bb41abf423abcc4a96d, type: 3}
   m_Name: Food_Apple
   m_EditorClassIdentifier: 
-  <Speed>k__BackingField: 10
+  <Speed>k__BackingField: 15
   <NutriotionValue>k__BackingField: 1
   <LifeTime>k__BackingField: 1
   <TargetTag>k__BackingField: Enemy

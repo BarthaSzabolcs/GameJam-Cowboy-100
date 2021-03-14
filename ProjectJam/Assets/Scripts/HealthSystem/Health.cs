@@ -1,7 +1,9 @@
-﻿using UnityEngine;
+﻿using System;
+using System.Collections.Generic;
+
+using UnityEngine;
 
 using BarthaSzabolcs.RichTextHelper;
-using System.Collections.Generic;
 
 namespace GameJam.HealthSystem
 {
@@ -9,6 +11,11 @@ namespace GameJam.HealthSystem
     {
         #region Datamembers
 
+        #region Events
+
+        public event Action OnCalm;
+
+        #endregion
         #region Editor Settings
 
         [SerializeField] private HealthData data;
@@ -28,7 +35,7 @@ namespace GameJam.HealthSystem
                 {
                     _points = value;
 
-                    Shrink();
+                    CalmDown();
                 }
                 else
                 {
@@ -68,8 +75,10 @@ namespace GameJam.HealthSystem
 
         #endregion
 
-        private void Shrink()
+        private void CalmDown()
         {
+            OnCalm?.Invoke();
+
             Debug.Log($"{name}'s health reached shrinked.".Color(Color.cyan));
         }
 
@@ -80,9 +89,9 @@ namespace GameJam.HealthSystem
             foreach (var swallowedObject in swallowedObjects)
             {
                 swallowedObject.SetActive(true);
-                var rBody = swallowedObject.GetComponent<Rigidbody>();
+                var rBody = swallowedObject.GetComponent<Rigidbody2D>();
 
-                var vector = new Vector3(Random.Range(-1, 1), 0, Random.Range(-1, 1));
+                var vector = new Vector3(UnityEngine.Random.Range(-1, 1), UnityEngine.Random.Range(-1, 1));
                 rBody.velocity = vector.normalized * 10f;
             }
 
@@ -94,8 +103,6 @@ namespace GameJam.HealthSystem
             swallowedObjects.Add(swallowedObject);
             swallowedObject.SetActive(false);
         }
-
-
 
         #endregion
     }

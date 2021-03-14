@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
 
 using BarthaSzabolcs.RichTextHelper;
+using BarthaSzabolcs.CommonUtility;
 
 using GameJam.HealthSystem;
-using BarthaSzabolcs.CommonUtility;
 
 namespace GameJam.FoodGun
 {
@@ -31,8 +31,8 @@ namespace GameJam.FoodGun
 
         private void Start()
         {
-            var rBody = GetComponent<Rigidbody>();
-            rBody.velocity = transform.forward * data.Speed;
+            var rBody = GetComponent<Rigidbody2D>();
+            rBody.velocity = transform.right * data.Speed;
 
             lifeTimer.OnTimeElapsed += () => Destroy(gameObject);
             lifeTimer.Interval = data.LifeTime;
@@ -44,7 +44,7 @@ namespace GameJam.FoodGun
             lifeTimer.Tick(Time.deltaTime);
         }
 
-        private void OnCollisionEnter(Collision collision)
+        private void OnCollisionEnter2D(Collision2D collision)
         {
             Debug.Log($"{name} collided with {collision.collider.name}.".Color(Color.grey));
             

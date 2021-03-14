@@ -64,7 +64,7 @@ public class Player : MonoBehaviour
     private Timer dashDurationTimer = new Timer();
     private Timer dashRechargeTimer = new Timer();
 
-    private Rigidbody rigidbody;
+    private Rigidbody2D rigidbody;
 
     private Camera camera;
 
@@ -81,7 +81,7 @@ public class Player : MonoBehaviour
 
     void Start()
     {
-        rigidbody = GetComponent<Rigidbody>();
+        rigidbody = GetComponent<Rigidbody2D>();
         camera = Camera.main;
 
         dashDurationTimer.Interval = dashTime;
@@ -121,10 +121,10 @@ public class Player : MonoBehaviour
     {
         dashRechargeTimer.Tick(Time.deltaTime);
 
-        var movemnet = new Vector3()
+        var movemnet = new Vector2()
         {
             x = Input.GetAxisRaw("Horizontal"),
-            z = Input.GetAxisRaw("Vertical")
+            y = Input.GetAxisRaw("Vertical")
         }
         .normalized;
 
@@ -164,23 +164,13 @@ public class Player : MonoBehaviour
 
     private void RotateGun()
     {
-        Ray ray = camera.ScreenPointToRay(Input.mousePosition);
+        var cursorPosition = camera.ScreenToWorldPoint(Input.mousePosition);
 
-        if (Physics.Raycast(ray, out var hitInfo, groundMask))
-        {
-            var horizontalScale = new Vector3(1, 0, 1);
+        var direction = cursorPosition - transform.position;
+        direction.Scale(new Vector3(1, 1, 0));
+        direction.Normalize();
 
-            var playerPosition = transform.position;
-            playerPosition.Scale(horizontalScale);
-
-            var cursorPosition = hitInfo.point;
-            cursorPosition.Scale(horizontalScale);
-
-            var direction = cursorPosition - playerPosition;
-
-            gun.transform.forward = direction.normalized;
-        }
-
+        gun.transform.right = direction;
     }
     
     #endregion

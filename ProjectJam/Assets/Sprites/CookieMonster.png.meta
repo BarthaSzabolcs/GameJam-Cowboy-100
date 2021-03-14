@@ -8,6 +8,12 @@ TextureImporter:
   - first:
       213: -1548400859208834794
     second: CookieMonster_1
+  - first:
+      213: 1368519601376430470
+    second: CookieMonster_2
+  - first:
+      213: 3444234114304735334
+    second: CookieMonster_3
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -146,6 +152,48 @@ TextureImporter:
       bones: []
       spriteID: 611a2f05f99f28ae0800000000000000
       internalID: -1548400859208834794
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CookieMonster_2
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6898334a355fdf210800000000000000
+      internalID: 1368519601376430470
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CookieMonster_3
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6687a6abda06ccf20800000000000000
+      internalID: 3444234114304735334
       vertices: []
       indices: 
       edges: []
