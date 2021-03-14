@@ -44,7 +44,10 @@ public class SpriteFlash : MonoBehaviour
         timer.Interval = time;
         timer.OnTimeElapsed += () =>
         {
-            spriteRenderer.material = defaultInstance;
+            if (spriteRenderer != null)
+            {
+                spriteRenderer.material = defaultInstance;
+            }
         };
         timer.Init(true);
 

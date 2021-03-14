@@ -63,6 +63,11 @@ namespace GameJam.FoodGun
             lifeTimer.Tick(Time.deltaTime);
         }
 
+        public void Reset()
+        {
+            lifeTimer.Reset();
+        }
+
         private void OnCollisionEnter2D(Collision2D collision)
         {
             Debug.Log($"{name} collided with {collision.collider.name}.".Color(Color.grey));

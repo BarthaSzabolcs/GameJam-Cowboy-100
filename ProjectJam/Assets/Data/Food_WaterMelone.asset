@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe957de174c11bb41abf423abcc4a96d, type: 3}
-  m_Name: Food_Apple
+  m_Name: Food_WaterMelone
   m_EditorClassIdentifier: 
-  <Speed>k__BackingField: 20
-  <NutriotionValue>k__BackingField: 1
-  <Sprite>k__BackingField: {fileID: 21300000, guid: 5db98aef157a7d5428c03939bcb51fa4, type: 3}
-  <Radius>k__BackingField: 0.4104281
-  <LifeTime>k__BackingField: 1
+  <Speed>k__BackingField: 10
+  <NutriotionValue>k__BackingField: 4
+  <Sprite>k__BackingField: {fileID: 21300000, guid: 5ec8141a43d72bc4da4951353680f2eb, type: 3}
+  <Radius>k__BackingField: 0.61564213
+  <LifeTime>k__BackingField: 5
   <TargetTag>k__BackingField: Enemy

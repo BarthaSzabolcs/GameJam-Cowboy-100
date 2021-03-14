@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 using BarthaSzabolcs.RichTextHelper;
+using GameJam.FoodGun;
 
 namespace GameJam.HealthSystem
 {
@@ -14,6 +15,7 @@ namespace GameJam.HealthSystem
         #region Events
 
         public event Action OnCalm;
+        public event Action OnDeath;
         public event Action<int> OnHealthChange;
 
         #endregion
@@ -56,6 +58,8 @@ namespace GameJam.HealthSystem
                 return _points;
             }
         }
+
+        public bool Calmed => Points == 1;
 
         #endregion
         #region Backing Fields
@@ -105,6 +109,7 @@ namespace GameJam.HealthSystem
                 rBody.velocity = vector.normalized * 10f;
             }
 
+            OnDeath?.Invoke();
             Destroy(gameObject);
         }
 
@@ -112,6 +117,7 @@ namespace GameJam.HealthSystem
         {
             swallowedObjects.Add(swallowedObject);
             swallowedObject.SetActive(false);
+            swallowedObject.GetComponent<Food>().Reset();
         }
 
         #endregion

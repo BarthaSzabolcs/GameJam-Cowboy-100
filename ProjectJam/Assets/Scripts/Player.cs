@@ -93,7 +93,10 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        StateLogic();
+        if (Time.deltaTime != 0)
+        {
+            StateLogic();
+        }
     }
 
     #endregion
