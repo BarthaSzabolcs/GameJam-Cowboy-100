@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe957de174c11bb41abf423abcc4a96d, type: 3}
-  m_Name: HealthData
+  m_Name: Food_Banana
   m_EditorClassIdentifier: 
-  <Speed>k__BackingField: 0
-  <NutriotionValue>k__BackingField: 0
-  <Sprite>k__BackingField: {fileID: 0}
-  <Radius>k__BackingField: 0
-  <LifeTime>k__BackingField: 0
-  <TargetTag>k__BackingField: 
-  <Boom>k__BackingField: {fileID: 0}
-  <Bounces>k__BackingField: 0
+  <Speed>k__BackingField: 60
+  <NutriotionValue>k__BackingField: 6
+  <Sprite>k__BackingField: {fileID: 21300000, guid: b2b07642569964f4c81a98b7d775d653, type: 3}
+  <Radius>k__BackingField: 0.4
+  <LifeTime>k__BackingField: 0.5
+  <TargetTag>k__BackingField: Enemy
+  <Boom>k__BackingField: {fileID: 3237391557525654256, guid: 3b976ea1c55c0dd418068bca1a197b7b, type: 3}
+  <Bounces>k__BackingField: 1

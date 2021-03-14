@@ -14,8 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Speed>k__BackingField: 10
   <NutriotionValue>k__BackingField: 4
-  <Sprite>k__BackingField: {fileID: 21300000, guid: 5ec8141a43d72bc4da4951353680f2eb, type: 3}
+  <Sprite>k__BackingField: {fileID: 21300000, guid: 5e91a4241bb345b4686a7f4f51392887, type: 3}
   <Radius>k__BackingField: 0.61564213
   <LifeTime>k__BackingField: 5
   <TargetTag>k__BackingField: Enemy
   <Boom>k__BackingField: {fileID: 3237391557525654256, guid: e097b154cca514a43bbcb7f4db952f4a, type: 3}
+  <Bounces>k__BackingField: 0

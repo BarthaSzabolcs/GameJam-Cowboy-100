@@ -44,9 +44,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0845f9e20abc4e34baf684126c9e2912, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  foodPrefab: {fileID: 0}
   foods:
-  - {fileID: 7383655763713845720, guid: 5daff1006031df84c9b2db704bf6c722, type: 3}
-  barrelOffset: {x: 0, y: 0, z: 0.375}
+  - {fileID: 11400000, guid: 5540a535a0c67634daca648414fa683c, type: 2}
+  - {fileID: 11400000, guid: b9d1b94cb39830b40930c8bd4eae46ab, type: 2}
+  - {fileID: 11400000, guid: 4ba72b147f1db08499add98c64e76db3, type: 2}
+  - {fileID: 11400000, guid: 3f414e8f42f30f4409c3e103b152c033, type: 2}
+  - {fileID: 11400000, guid: 399d69e217042f2449acf08529bb4a25, type: 2}
+  barrelOffset: {x: 0, y: 0}
+  leftHand: {fileID: 0}
+  rightHand: {fileID: 0}
 --- !u!212 &8856695725232874797
 SpriteRenderer:
   m_ObjectHideFlags: 0
