@@ -11,9 +11,28 @@ namespace GameJam.FoodGun
     {
         #region Datamembers
 
-        #region Editor Settings
+        #region Public Properties
 
-        [SerializeField] private FoodData data;
+        public FoodData Data 
+        { 
+            get
+            {
+                return _data;
+            }
+            set
+            {
+                if (_data != value)
+                {
+                    _data = value;
+                    InitData(_data);
+                }
+            }
+        }
+
+        #endregion
+        #region Backing Fields
+
+        private FoodData _data;
 
         #endregion
         #region Private Fields
@@ -32,10 +51,10 @@ namespace GameJam.FoodGun
         private void Start()
         {
             var rBody = GetComponent<Rigidbody2D>();
-            rBody.velocity = transform.right * data.Speed;
+            rBody.velocity = transform.right * Data.Speed;
 
             lifeTimer.OnTimeElapsed += () => Destroy(gameObject);
-            lifeTimer.Interval = data.LifeTime;
+            lifeTimer.Interval = Data.LifeTime;
             lifeTimer.Init();
         }
 
@@ -48,13 +67,22 @@ namespace GameJam.FoodGun
         {
             Debug.Log($"{name} collided with {collision.collider.name}.".Color(Color.grey));
             
-            if (collision.gameObject.tag == data.TargetTag)
+            if (collision.gameObject.tag == Data.TargetTag)
             {
                 var health = collision.gameObject.GetComponent<Health>();
                 health.Swallow(gameObject);
 
-                health.Points -= data.NutriotionValue;
+                health.Points -= Data.NutriotionValue;
             }
+        }
+
+        private void InitData(FoodData data)
+        {
+            var spriteRenderer = GetComponent<SpriteRenderer>();
+            spriteRenderer.sprite = data.Sprite;
+
+            var circleCollider = GetComponent<CircleCollider2D>();
+            circleCollider.radius = data.Radius;
         }
 
         #endregion

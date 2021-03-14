@@ -14,11 +14,13 @@ namespace GameJam.HealthSystem
         #region Events
 
         public event Action OnCalm;
+        public event Action<int> OnHealthChange;
 
         #endregion
         #region Editor Settings
 
-        [SerializeField] private HealthData data;
+        [field: SerializeField]
+        public HealthData Data { get; private set; }
 
         #endregion
         #region Public Properties
@@ -27,6 +29,8 @@ namespace GameJam.HealthSystem
         {
             set
             {
+                OnHealthChange?.Invoke(value);
+
                 if (value <= 0)
                 {
                     Explode();
@@ -70,7 +74,7 @@ namespace GameJam.HealthSystem
 
         private void Start()
         {
-            _points = data.MaxHealth;
+            _points = Data.MaxHealth;
         }
 
         #endregion
@@ -89,9 +93,10 @@ namespace GameJam.HealthSystem
             foreach (var swallowedObject in swallowedObjects)
             {
                 swallowedObject.SetActive(true);
+                swallowedObject.transform.position = transform.position;
                 var rBody = swallowedObject.GetComponent<Rigidbody2D>();
 
-                var vector = new Vector3(UnityEngine.Random.Range(-1, 1), UnityEngine.Random.Range(-1, 1));
+                var vector = new Vector3(UnityEngine.Random.Range(-1f, 1f), UnityEngine.Random.Range(-1f, 1f));
                 rBody.velocity = vector.normalized * 10f;
             }
 

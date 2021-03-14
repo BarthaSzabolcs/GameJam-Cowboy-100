@@ -7,9 +7,16 @@ namespace GameJam.FoodGun
     {
         #region Datamembers
 
+        #region Events
+
+        public delegate void QueueChanged(Queue<FoodData> queue);
+        public event QueueChanged OnQueueChanged;
+
+        #endregion
         #region Editor Settings
 
-        [SerializeField] private GameObject[] foods;
+        [SerializeField] private GameObject foodPrefab;
+        [SerializeField] private FoodData[] foods;
 
         [SerializeField] private Vector2 barrelOffset;
 
@@ -30,7 +37,7 @@ namespace GameJam.FoodGun
         #endregion
         #region Private Fields
 
-        private Queue<GameObject> foodQueue = new Queue<GameObject>();
+        private Queue<FoodData> foodQueue = new Queue<FoodData>();
         private SpriteRenderer spriteRenderer;
 
         #endregion
@@ -51,7 +58,7 @@ namespace GameJam.FoodGun
         {
             for (int i = 0; i < 5; i++)
             {
-                foodQueue.Enqueue(NextFood());
+                LoadFood();
             }
 
             spriteRenderer = GetComponent<SpriteRenderer>();
@@ -79,17 +86,19 @@ namespace GameJam.FoodGun
 
         public void Shoot()
         {
-            var food = foodQueue.Dequeue();
-
-            var instance = Instantiate(food, BarrelPosition, Quaternion.identity);
+            var instance = Instantiate(foodPrefab, BarrelPosition, Quaternion.identity);
             instance.transform.right = transform.right;
 
-            foodQueue.Enqueue(NextFood());
+            instance.GetComponent<Food>().Data = foodQueue.Dequeue();
+            
+            LoadFood();
         }
 
-        private GameObject NextFood()
+        private void LoadFood()
         {
-            return foods[Random.Range(0, foods.Length)];
+            foodQueue.Enqueue(foods[Random.Range(0, foods.Length)]);
+
+            OnQueueChanged?.Invoke(foodQueue);
         }
 
         #endregion
