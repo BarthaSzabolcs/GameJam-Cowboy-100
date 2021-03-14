@@ -25,6 +25,7 @@ namespace GameJam.HealthSystem
         public HealthData Data { get; private set; }
 
         [SerializeField] private SpriteFlash flash;
+        [SerializeField] private ParticleSystem boom;
 
         #endregion
         #region Public Properties
@@ -109,7 +110,13 @@ namespace GameJam.HealthSystem
                 rBody.velocity = vector.normalized * 10f;
             }
 
+            Destroy();
+        }
+
+        public void Destroy()
+        {
             OnDeath?.Invoke();
+            Instantiate(boom, transform.position, Quaternion.identity);
             Destroy(gameObject);
         }
 

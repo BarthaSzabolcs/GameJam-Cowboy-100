@@ -47,6 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6660c9757fa36ce40a38c06f42192100, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dust: {fileID: 7421527629118428362, guid: bd328ac1061cd4347b115f4c202db431, type: 3}
   runSpeed: 10
   dashSpeed: 30
   gun: {fileID: 2833630269453916846}
