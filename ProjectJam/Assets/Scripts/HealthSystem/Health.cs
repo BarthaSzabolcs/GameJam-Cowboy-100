@@ -22,6 +22,8 @@ namespace GameJam.HealthSystem
         [field: SerializeField]
         public HealthData Data { get; private set; }
 
+        [SerializeField] private SpriteFlash flash;
+
         #endregion
         #region Public Properties
 
@@ -44,6 +46,8 @@ namespace GameJam.HealthSystem
                 else
                 {
                     Debug.Log($"{name}'s health changed from {_points} to {value}.".Color(Color.yellow));
+
+                    flash.StartFlash(Color.red);
                     _points = value;
                 }
             }
@@ -82,6 +86,7 @@ namespace GameJam.HealthSystem
         private void CalmDown()
         {
             OnCalm?.Invoke();
+            flash.StartFlash(Color.green);
 
             Debug.Log($"{name}'s health reached shrinked.".Color(Color.cyan));
         }

@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System.Linq;
+using System.Collections.Generic;
+
 using UnityEngine;
 
 using GameJam.FoodGun;
@@ -10,11 +12,22 @@ namespace GameJam.UI
         [SerializeField] private GameObject foodViewPrefab;
         [SerializeField] private Gun gun;
 
+        [Header("CurrentFood")]
+        [SerializeField] private FoodView currentFood;
+        [SerializeField] private Vector3 currentFoodOffset;
+
         private List<FoodView> views = new List<FoodView>();
 
         private void Awake()
         {
             gun.OnQueueChanged += Refresh;
+
+            //Cursor.visible = false;
+        }
+
+        private void Update()
+        {
+            currentFood.transform.position = Input.mousePosition + currentFoodOffset;
         }
 
         private void Refresh(Queue<FoodData> queue)
@@ -36,6 +49,8 @@ namespace GameJam.UI
                 views[index].Refresh(foodData);
                 index++;
             }
+
+            currentFood.Refresh(queue.First());
         }
     }
 }
