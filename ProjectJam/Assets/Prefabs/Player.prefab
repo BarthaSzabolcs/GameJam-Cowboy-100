@@ -57,7 +57,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   animator:
-    animator: {fileID: 0}
+    animator: {fileID: 3542512969404801801}
   dashTime: 0.2
   dashRecharge: 0.35
 --- !u!212 &8964156707823512626

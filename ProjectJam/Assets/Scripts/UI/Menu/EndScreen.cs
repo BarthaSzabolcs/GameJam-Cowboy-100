@@ -25,6 +25,8 @@ namespace GameJam.UI
 
         public void Show(bool playerDead, int enemies, int calmedEnemies, int deadEnemies, int nextLevelIndex)
         {
+            nextSceneIndex = nextLevelIndex;
+
             canvas.gameObject.SetActive(true);
 
             Time.timeScale = 0;
@@ -57,7 +59,9 @@ namespace GameJam.UI
             if (nextSceneIndex != -1)
             {
                 Time.timeScale = 1;
-                
+
+                Debug.Log($"Load level {nextSceneIndex}");
+
                 SceneManager.LoadScene(nextSceneIndex);
             }
         }
